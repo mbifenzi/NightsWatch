@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <>
       <div className="bg-hero-pattern relative w-full h-screen bg-cover bg-center bg-no-repeat bg-fixed">
-        <nav className="fixed w-full z-50">
+        <nav className="fixed w-full">
           <div
             className={
               isActive
@@ -61,13 +61,13 @@ const Header = () => {
           <div
             className={
               isActive
-                ? "hidden transition duration-500 ease-in-out md:block"
-                : "h-fit md:hidden nav-links text-center bg-gradient-to-b from-black/70 to-black/60 shadow-2xl text-red-700 absolute  w-full flex flex-col justify-center items-center text-2xl z-50"
+                ? "hidden transition duration-500"
+                : "h-fit md:hidden nav-links text-center bg-gradient-to-b from-black/70 to-black/25 shadow-2xl text-red-700 absolute  w-full flex flex-col justify-center items-center text-2xl z-50"
             }
           >
             <a
-              href="/trending"
-              className=" font-bold p-4 w-full  hover:text-black hover:bg-red-700 transition duration-300 z-50"
+              href="/"
+              className=" font-bold p-4 w-full hover:text-black hover:bg-red-700 transition duration-300 z-50"
             >
               Movies
             </a>
