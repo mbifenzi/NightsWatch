@@ -3,18 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import reportWebVitals from './reportWebVitals';
-// import SignUp from './components/SignUp';
-// import SignIn from './components/SignIn';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Navbar from './components/Navbar';
 import Home from './components/Home';
+import { GlobalState } from './context/GlobalState';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
-
+    <GlobalState>
+      <Home />
+    </GlobalState>
   </React.StrictMode>
 );
 

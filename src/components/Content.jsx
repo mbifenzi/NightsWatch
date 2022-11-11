@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { GlobalContext } from "../context/GlobalState";
+import { useContext } from "react";
 import {
   Routes,
   Route,
@@ -152,7 +154,7 @@ const TopRated = () => {
     };
     fetchTopRated();
   }, []);
-  console.log(topRated);
+
   return (
     <div className="w-full h-fit bg-[#4a070a]">
       <div className="container mx-auto px-4 pt-16 text-center">
@@ -206,8 +208,17 @@ const TopRated = () => {
 const Movie = () => {
   const location = useLocation();
   const movie = location.state.movie;
-//   console.log(movie);
-
+  // const [ToWatch, setToWatch] = React.useState(1);
+  const value = useContext(GlobalContext);
+  const { movies, addToList, removeFromList } = value;
+  const checker = (movie) => {
+    const check = movies.find((m) => m.id === movie.id);
+    if (check) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return (
     <div className="w-full h-fit bg-[#4a070a]">
       <div className="container mx-auto px-4 pt-16 ">
@@ -237,6 +248,12 @@ const Movie = () => {
               <span>{movie.release_date}</span>
             </div>
             <p className="text-gray-300 mt-8 pb-10">{movie.overview}</p>
+            <div className="flex justify-center items-center text-gray-400 text-sm">
+              {checker(movie) === false ? 
+                ( <button onClick={()=>addToList(movie)} className="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full"> Add to Watchlist</button> ) :
+                ( <button onClick={() => removeFromList(movie)}  className="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full"> Remove from Watchlist</button> )
+              }
+            </div>
           </div>
         </div>
       </div>
